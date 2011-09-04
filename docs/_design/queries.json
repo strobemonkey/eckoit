@@ -1,0 +1,13 @@
+{
+   "views": {
+       "byCollection": {
+         "map": "function(doc) {if (doc.collection) { emit(doc.collection, doc); } }"
+       },
+       "things": {
+         "map": "function(doc) { if (doc.collection == 'things') { emit(doc.collection, doc); } };"
+       }
+   },
+   "filters": {
+      "things-filter": "function(doc) { if (doc.collection == 'things' || doc._deleted) return true; else return false; };"
+   }
+}

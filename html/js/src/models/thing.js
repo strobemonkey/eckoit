@@ -3,7 +3,7 @@ this.Thing = Backbone.Model.extend({
     name: "no name"
   },
   url: function() {
-    return "/thing/" + this.id;
+    return "/things/" + this.id;
   },
   validate: function(attrs) {
     if (!attrs.name) {

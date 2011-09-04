@@ -1,14 +1,16 @@
 this.AppRouter = Backbone.Router.extend({
   
   routes: {
-    "":           "index",  // #index
-    "thing/:id":  "thing"   // e.g. #thing/123
+    "":            "index",  // #index
+    "things/:id":  "thing"   // e.g. #things/123
   },
   
   index: function() {
+    console.log("AppRouter.index");
     this.things = new Things();
     this.thingsView = new ThingListView({
-      collection: this.things
+      collection: this.things,
+      el: '#things'
     });
     this.things.fetch();
   },

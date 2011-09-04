@@ -1,0 +1,60 @@
+<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8"/>
+  <title>Ecko-It</title>
+
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
+  <link rel="icon" type="image/vnd.microsoft.icon" href="images/ecko-it.ico">
+
+  <link rel="stylesheet" href="css/bootstrap-1.1.0.min.css">
+
+  <script type="text/javascript" src="js/lib/json2.js"></script>
+  <script type="text/javascript" src="js/lib/jquery-1.6.2.min.js"></script>
+  <script type="text/javascript" src="js/lib/underscore.js"></script>
+  <script type="text/javascript" src="js/lib/backbone.js"></script>
+  <script type="text/javascript" src="js/lib/mustache.js"></script>
+  <script type="text/javascript" src="js/lib/jquery.couch.js"></script>
+  <script type="text/javascript" src="js/lib/backbone-couchdb.js"></script>
+
+  <script type="text/javascript" src="js/src/models/thing.js"></script>
+  <script type="text/javascript" src="js/src/models/things.js"></script>
+  <script type="text/javascript" src="js/src/routers/app.js"></script>
+  <script type="text/javascript" src="js/src/views/thing.js"></script>
+  <script type="text/javascript" src="js/src/views/thing-list.js"></script>
+  <script type="text/javascript" src="js/src/app.js"></script>
+
+</head>
+
+<body>
+  <header>
+  </header>
+
+  <div id="app">
+
+    <div id="things">
+
+      <div id="create-thing">
+        <form>
+          <input id="new-thing" placeholder="What's the new thing?" type="text" class="xlarge"/>
+        </form>
+        <span class="ui-tooltip-top" style="display:none;">Press Enter to save this thing</span>
+      </div>
+
+      <ul id="things-list"></ul>
+      
+    </ul>
+
+  </div>
+  
+  <div id="tests">
+    <a href="SpecRunner.html">Jasmine Tests</a>
+  </div>
+  
+  <footer>
+  </footer>
+
+
+</body>
+
+</html>
