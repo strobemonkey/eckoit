@@ -84,7 +84,7 @@ this.ThingListView = Backbone.View.extend({
     
     thingTemplate = 
             '<h2>{{name}}</h2>' +
-            '<input class="edit" type="text" ' +
+            '<input class="edit xlarge" type="text" ' +
             'value="{{name}}" style="display:none"/>' + 
            '<a href="#" class="edit">Edit</a>';
            

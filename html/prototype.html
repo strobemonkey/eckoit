@@ -27,24 +27,55 @@
 </head>
 
 <body>
-  <header>
-  </header>
-
-  <div id="app">
-
-    <div id="things">
-
-      <div id="create-thing">
-        <form>
-          <input id="new-thing" placeholder="What's the new thing?" type="text" class="xlarge"/>
+  <div class="topbar">
+    <div class="fill">
+      <div class="container">
+        <h3><a href="#">Ecko-It</a></h3>
+        <ul>
+	    <li><a href="#">Dashboard</a></li>
+		<li><a href="#">Timeline</a></li>
+          <li class="active"><a href="#">Topics</a></li>
+          <li ><a href="#">Threads</a></li>
+		<li ><a href="#">Meetings</a></li>
+        </ul>
+        <form action=""> 
+          <input type="text" placeholder="Search">
         </form>
-        <span class="ui-tooltip-top" style="display:none;">Press Enter to save this thing</span>
+        <ul class="nav secondary-nav">
+          <li class="menu">
+            <a href="#" class="menu">Dropdown</a>
+            <ul class="menu-dropdown">
+              <li><a href="#">Secondary link</a></li>
+              <li><a href="#">Something else here</a></li>
+              <li class="divider"></li>
+              <li><a href="#">Another link</a></li>
+            </ul>
+          </li>
+        </ul>
       </div>
+    </div> <!-- /fill -->
+  </div> <!-- /topbar -->
 
-      <ul id="things-list"></ul>
+  <div class="container">
+    <div class="hero-unit">
+
+      <div id="app">
+
+        <div id="things">
+
+          <div id="create-thing">
+            <form>
+              <input id="new-thing" placeholder="What's the new thing?" type="text" class="xlarge"/>
+            </form>
+            <span class="ui-tooltip-top" style="display:none;">Press Enter to save this thing</span>
+          </div>
+
+          <ul id="things-list"></ul>
       
-    </ul>
+        </ul>
 
+      </div>
+    </div>
   </div>
   
   <div id="tests">
