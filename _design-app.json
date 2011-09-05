@@ -112,8 +112,10 @@
        },
        "screenshots_by_meeting": {
            "map": "function(doc) {\n  if (doc.type && doc.type == 'screenShots' && doc._attachments) {\n      var result = { id: doc._id, attachments : [] };\n      for (var key in doc._attachments) {\n\tresult.attachments.push(key)\n      }\n      emit(doc.meeting, result);\n  }\n}"
+       },
+       "things": {
+         "map": "function(doc) { if (doc.collection == 'things') { emit(doc.collection, doc); } };"
        }
-
    },
    "lists": {
        "graphml": "function (head, req) { var clean_id = function(id) {return id.replace(/[^a-zA-Z_0-9]+/g,'')}; var readable = function (id) {return id.replace(/_/g,' ');}; var xml = new Array(); send('<?xml version=\"1.0\" encoding=\"UTF-8\"?><graphml xmlns=\"http://graphml.graphdrawing.org/xmlns\">'); send('<graph id=\"topics\" edgedefault=\"directed\">'); send('<key id=\"name\" for=\"node\" attr.name=\"name\" attr.type=\"string\"/> '); var row; while(row = getRow()) { send('<node id=\"' + clean_id(row.id) + '\" >'); send('<data key=\"name\">'+ readable(row.id) +'</data>'); send('</node>'); if (row.value) { for (var i=0; i < row.value.length; i++) { var tag = clean_id(row.value[i]); send('<edge source=\"'+tag+'\" target=\"' + clean_id(row.id) + '\"/> '); } } } send('</graph></graphml>'); } "
@@ -121,7 +123,8 @@
    "filters": {
        "design_only": "function(doc,req) { if (doc._id.indexOf('_design') === 0) return true; return false; }",
        "everythingButLR": "function (doc, req) { if (doc.recording && doc.liferecorder) { return false; } return true; } ",
-       "not_takeout": "function (doc, req) { if (doc._id == \"_design/takeout\" || doc._id == \"_design/takeout-extended\") { return false; } return true; } "
+       "not_takeout": "function (doc, req) { if (doc._id == \"_design/takeout\" || doc._id == \"_design/takeout-extended\") { return false; } return true; } ",
+       "things-filter": "function(doc) { if (doc.collection == 'things' || doc._deleted) return true; else return false; };"
    }
 
 
