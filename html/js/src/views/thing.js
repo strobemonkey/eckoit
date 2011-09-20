@@ -1,52 +1,44 @@
 this.ThingView = Backbone.View.extend({
   
-  tagName: "li",
+    tagName: "li",
   
-  initialize: function(options) {
-    
+    initialize: function(options) {
+
     _.bindAll(this, "render", "edit", "close", "updateOnEnter");
     this.model.bind('change', this.render);
-    
-    // this.template = options.template || "";
+
     this.template = 
-              '<h2>{{name}}</h2>' +
-              '<input class="edit xlarge" type="text" ' +
-              'value="{{name}}" style="display:none"/>' + 
-             '<a href="#" class="edit">Edit</a>';
-    
-  },
-  
-  render: function() {
-    $(this.el).html(Mustache.to_html(this.template, this.model.toJSON()));
-    return this;
-  },
+        '<h2>{{name}}</h2>' +
+        '<input class="edit xlarge" type="text" ' +
+        'value="{{name}}" style="display:none"/>' + 
+        '<a href="#" class="edit">Edit</a>';
 
-  events: {
-    "click a.edit":   "edit",
-    "keypress input": "updateOnEnter"
-  },
+    },
+  
+    render: function() {
+        $(this.el).html(Mustache.to_html(this.template, this.model.toJSON()));
+        return this;
+    },
 
-  edit: function() {
-    
-    this.$('h2').fadeOut(500);
-    this.$('input.edit').fadeIn(500);
-    
-  },
+    events: {
+        "click a.edit":   "edit",
+        "keypress input": "updateOnEnter"
+    },
+
+    edit: function() {
+        this.$('h2').fadeOut(500);
+        this.$('input.edit').fadeIn(500);
+    },
   
-  // Close the `"editing"` mode, saving changes to the thing.
-  close: function() {
-    
-    this.model.save( { name: this.$('input.edit').val() } );
-    
-    $(this.el).removeClass("editing");
-    
-  },
+    // Close the `"editing"` mode, saving changes to the thing.
+    close: function() {
+        this.model.save( { name: this.$('input.edit').val() } );
+        $(this.el).removeClass("editing");
+    },
   
-  // If you hit `enter`, we're through editing the item.
-  updateOnEnter: function(e) {
-    
-    if (e.keyCode == 13) this.close();
-    
-  }
+    // If you hit `enter`, we're through editing the item.
+    updateOnEnter: function(e) {
+        if (e.keyCode == 13) this.close();
+    }
   
 });
