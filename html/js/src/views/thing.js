@@ -7,18 +7,18 @@ this.ThingView = Backbone.View.extend({
     _.bindAll(this, "render", "edit", "close", "updateOnEnter");
     this.model.bind('change', this.render);
     
-    this.template = options.template || "";
+    // this.template = options.template || "";
+    this.template = 
+              '<h2>{{name}}</h2>' +
+              '<input class="edit xlarge" type="text" ' +
+              'value="{{name}}" style="display:none"/>' + 
+             '<a href="#" class="edit">Edit</a>';
     
   },
   
   render: function() {
-    
-    console.log("ThingView.render");
-    
     $(this.el).html(Mustache.to_html(this.template, this.model.toJSON()));
-    
     return this;
-    
   },
 
   events: {

@@ -1,5 +1,7 @@
 this.ThingListView = Backbone.View.extend({
 
+  el: $("#things"),
+
   tagName: "ul",
   
   className: "things",
@@ -15,44 +17,35 @@ this.ThingListView = Backbone.View.extend({
     this.input = this.$("#new-thing");
     
     // We need to bind all the view methods, because that's what backbone expects us to do.
-    _.bindAll(this, "render", "addThing", "createOnEnter");
+    _.bindAll(this, "render", "addOne");
     
     if (this.collection) {  // This check is a frig because I'm avoiding re-writing the tests.
-    
-      // this.collection.bind('add', this.addOne, this);
-      this.collection.bind('all', this.render, this);
-
+      // this.collection.bind('all', this.render, this);
+      this.collection.bind("reset", this.render);
     }
     
   },
 
   render: function() {
-
-    console.log("ThingListView.render");
-
-    // console.log(this.$("#things-list").html);
-
+      
     // Clear our list before adding all our things.
-    // this.$("#things-list").html("");
-
-    // Render every thing from our collection.
-    this.collection.each(this.addThing);
-
-    // A good convention is to return this at the end of render to enable chained calls. 
+    this.$("#things-list").html("");
+    
+    // Render every thing from our collection.    
+    this.collection.each(this.addOne);
     return this;  
-
   },
   
   // Add a single thing to the list by creating a view for it, and
   // appending its element to the `<ul>`.
   addOne: function(thing) {
-    
-    console.log("ThingListView.addOne");
-    
+
     var view = new ThingView({model: thing});
-    
-    this.$("#thing-list").append(view.render().el);
-    
+
+    var rendered = view.render().el;
+
+    this.$("#things-list").append(rendered);
+
   },
   
   // If you hit return in the main input field, and there is text to save,
@@ -79,24 +72,13 @@ this.ThingListView = Backbone.View.extend({
   },
   
   addThing: function(thing) {
-    
-    console.log("ThingListView.addThing");
-    
-    thingTemplate = 
-            '<h2>{{name}}</h2>' +
-            '<input class="edit xlarge" type="text" ' +
-            'value="{{name}}" style="display:none"/>' + 
-           '<a href="#" class="edit">Edit</a>';
-           
-    var view = new ThingView({model: thing, template: thingTemplate});
-    // var view = new ThingView({model: thing});
+  
+    var view = new ThingView({model: thing});
     
     var thingEl = view.render().el;
     
     $(this.el).append(thingEl);
     
-    // this.$("#things-list").append(thingEl);
-    
   }
-
+   
 });
