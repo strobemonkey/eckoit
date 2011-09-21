@@ -4,14 +4,9 @@ this.ThingView = Backbone.View.extend({
   
     initialize: function(options) {
 
-    _.bindAll(this, "render", "edit", "close", "updateOnEnter");
-    this.model.bind('change', this.render);
-
-    this.template = 
-        '<h2>{{name}}</h2>' +
-        '<input class="edit xlarge" type="text" ' +
-        'value="{{name}}" style="display:none"/>' + 
-        '<a href="#" class="edit">Edit</a>';
+        _.bindAll(this, "render", "edit", "close", "updateOnEnter");
+        this.model.bind('change', this.render);
+        this.template = $('#thing-template').html();
 
     },
   

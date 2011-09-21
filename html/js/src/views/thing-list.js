@@ -13,7 +13,8 @@ this.ThingListView = Backbone.View.extend({
 
     initialize: function() {
         
-        this.input = this.$("#new-thing");
+        this.$things = this.$("#things-list");
+        this.$input = this.$("#new-thing");
         _.bindAll(this, "render", "addThing", "createOnEnter");
         if (this.collection) {  // This check is a frig because I'm avoiding re-writing the tests.
             this.collection.bind("reset", this.render);
@@ -23,8 +24,7 @@ this.ThingListView = Backbone.View.extend({
 
     render: function() {
         
-        var $things = this.$("#things-list");
-        $things.html("");
+        this.$things.html("");
         this.collection.each(this.addThing);
         return this;  
         
@@ -34,10 +34,9 @@ this.ThingListView = Backbone.View.extend({
     // appending its element to the `<ul>`.
     addThing: function(thing) {
         
-        var $things = this.$("#things-list");
         var view = new ThingView({model: thing});
         var rendered = view.render().el;
-        $things.append(rendered);
+        this.$things.append(rendered);
         
     },
 
@@ -48,14 +47,14 @@ this.ThingListView = Backbone.View.extend({
         var text,
             newThing;
 
-        text = this.input.val();
+        text = this.$input.val();
         if (!text || e.keyCode != 13) return;
 
         newThing = this.collection.create({name: text});
 
         this.addThing(newThing);
 
-        this.input.val('');
+        this.$input.val('');
 
     },
 
