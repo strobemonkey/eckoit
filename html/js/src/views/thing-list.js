@@ -1,10 +1,6 @@
 this.ThingListView = Backbone.View.extend({
 
-    el: $("#things"),
-
-    tagName: "ul",
-
-    className: "things",
+    el: "#things",
 
     // Delegated event for creating new items
     events: {
@@ -12,14 +8,12 @@ this.ThingListView = Backbone.View.extend({
     },
 
     initialize: function() {
-        
         this.$things = this.$("#things-list");
         this.$input = this.$("#new-thing");
         _.bindAll(this, "render", "addThing", "createOnEnter");
         if (this.collection) {  // This check is a frig because I'm avoiding re-writing the tests.
             this.collection.bind("reset", this.render);
         }
-        
     },
 
     render: function() {

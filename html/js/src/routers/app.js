@@ -9,8 +9,7 @@ this.AppRouter = Backbone.Router.extend({
     console.log("AppRouter.index");
     this.things = new Things();
     this.thingsView = new ThingListView({
-      collection: this.things,
-      el: '#things'
+      collection: this.things
     });
     this.things.fetch();
   },
