@@ -23,10 +23,18 @@
   <script type="text/javascript" src="js/src/views/thing.js"></script>
   <script type="text/javascript" src="js/src/views/thing-list.js"></script>
   <script type="text/javascript" src="js/src/app.js"></script>
+  <script type="text/javascript" src="js/src/views/thing.form.js"></script>
 
   <script type="text/template" id="thing-template">
     <h2>{{name}}</h2><input class="edit xlarge" type="text" value="{{name}}" style="display:none"/>
     <a href="#" class="edit">Edit</a>
+  </script>
+
+  <script type="text/template" id="thing-form-template">
+    <form>
+      <input id="new-thing" placeholder="What's the new thing?" type="text" class="xlarge"/>
+    </form>
+    <span class="ui-tooltip-top" style="display:none;">Press Enter to save this thing</span>
   </script>
 
 </head>
@@ -66,14 +74,10 @@
 
       <div id="app">
 
-        <div id="things">
+        <div id="create-thing">
+        </div>
 
-          <div id="create-thing">
-            <form>
-              <input id="new-thing" placeholder="What's the new thing?" type="text" class="xlarge"/>
-            </form>
-            <span class="ui-tooltip-top" style="display:none;">Press Enter to save this thing</span>
-          </div>
+        <div id="things">
 
           <ul id="things-list"></ul>
       

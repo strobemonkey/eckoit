@@ -36,7 +36,8 @@ describe("AppRouter", function() {
           .toHaveBeenCalledOnce();
         expect(this.thingListViewStub)
           .toHaveBeenCalledWith({
-            collection: this.collection
+            collection: this.collection,
+            el: "#things"
           });
       });
   

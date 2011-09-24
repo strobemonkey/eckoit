@@ -1,14 +1,14 @@
 describe("ThingListView", function() {
   
     beforeEach(function() {
-        this.view = new ThingListView({el: $("#things")});
+        this.view = new ThingListView();
     });
 
     describe("Instantiation", function() {
 
         it("should create a list element", function() {
             console.log("instantiation", this.view.el);
-            expect(this.view.el.nodeName).toEqual("ul");
+            expect(this.view.el.nodeName).toEqual("UL");
         });
 
         it("should have a class of 'things'", function() {
